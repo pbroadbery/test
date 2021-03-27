@@ -17,7 +17,7 @@ jobs:
     - name: Build
       run: |
         ls
-        chmod a+x build.sh
+        chmod a+x *.sh
         ./build.sh
 
     - name: Publish
