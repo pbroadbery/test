@@ -59,7 +59,7 @@ jobs:
         if: ${{ env.OK_RELEASE == 'OK' }}
         uses: ncipollo/release-action@v1
         with:
-          token: $${{ secrets.GITHUB_TOKEN }}
+          token: $${{ secrets.RELEASETOKEN }}
           name: Release $${{ env.RELEASE }}
           allowUpdates: true
           prerelease: true
