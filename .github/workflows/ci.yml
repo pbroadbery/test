@@ -39,5 +39,15 @@ jobs:
           RELEASE="${GITHUB_REF/refs\/tags\/release-}"
           echo "RELEASE=$RELEASE" >> $GITHUB_ENV
 
-      - name: Create Release
+      - name: Note Release
         run: echo "Release is $RELEASE this time"
+
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: plugin
+          path: plugin
+
+      - name: Check
+        run: |
+          ls -lR
