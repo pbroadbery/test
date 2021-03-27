@@ -59,8 +59,8 @@ jobs:
         if: ${{ env.OK_RELEASE == 'OK' }}
         uses: ncipollo/release-action@v1
         with:
-          token: $${{ secrets.RELEASETOKEN }}
-          name: Release $${{ env.RELEASE }}
+          token: ${{ secrets.RELEASETOKEN }}
+          name: Release ${{ env.RELEASE }}
           allowUpdates: true
           prerelease: true
           artifacts: ${{ format('plugin/plugin-{0}.txt', env.RELEASE) }}
