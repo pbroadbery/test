@@ -1,4 +1,4 @@
 #!/bin/sh
-VERSION=1
+. env.sh
 mkdir -p build
-date > build/${VERSION}.txt
+date > build/plugin-${VERSION}.txt
