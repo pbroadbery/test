@@ -16,7 +16,7 @@ jobs:
 
     - name: Build
       run: |
-        ls
+        ls -l
         chmod a+x *.sh
         ./build.sh
 
