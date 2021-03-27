@@ -1,0 +1,37 @@
+name: CI
+
+on:
+    push: '*'
+    tags:
+      - 'release/*'
+
+env:
+  GITHUB_REF: ${{ github.ref }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Build
+      run: |
+        chmod a+x *.sh
+	./build.sh
+
+    - name: Publish
+      uses: publish-artifact@v2
+        name: plugin
+        path: build/datestamp.txt
+
+  upload-release:
+    if: contains(github.ref, 'refs/tags/release-')
+    needs: ["Build"]
+    steps:
+      - name: Set Version
+        run: |
+          RELEASE="${GITHUB_REF/ref\/tags\/release-}"
+	  echo "::set-env name=RELEASE::$RELEASE"
+
+      - name: Create Release
+        run echo "Release is $RELEASE"
+	
