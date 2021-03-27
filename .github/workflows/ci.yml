@@ -63,4 +63,4 @@ jobs:
           name: Release $${{ env.RELEASE }}
           allowUpdates: true
           prerelease: true
-          artifacts: ${{ format("plugin/plugin-{0}.txt", env.RELEASE) }}
+          artifacts: ${{ format('plugin/plugin-{0}.txt', env.RELEASE) }}
