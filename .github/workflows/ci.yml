@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: Build
       run: |
-        chmod a+x *.sh
+        chmod a+x build.sh
         ./build.sh
 
     - name: Publish
