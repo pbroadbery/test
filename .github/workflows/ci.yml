@@ -36,7 +36,7 @@ jobs:
     steps:
       - name: Set Version
         run: |
-          RELEASE="${GITHUB_REF/ref\/tags\/release-}"
+          RELEASE="${GITHUB_REF/refs\/tags\/release-}"
           echo "RELEASE=$RELEASE" >> $GITHUB_ENV
 
       - name: Create Release
