@@ -52,7 +52,7 @@ jobs:
         run: |
           set -x
           ls -lR
-          OK_RELEASE=$( [ -f "plugin/plugin-$RELEASE"] && echo OK)
+          OK_RELEASE=$( [ -f "plugin/plugin-$RELEASE.txt" ] && echo OK)
           echo "OK_RELEASE=$OK_RELEASE" >> $GITHUB_ENV
 
       - name: Release
