@@ -13,7 +13,7 @@ jobs:
     - name: Build
       run: |
         chmod a+x *.sh
-	    ./build.sh
+        ./build.sh
 
     - name: Publish
       uses: actions/upload-artifact@v2
