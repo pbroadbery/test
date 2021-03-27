@@ -52,7 +52,7 @@ jobs:
         run: |
           set -x
           ls -lR
-          OK_RELEASE=$( [ -f "plugin/plugin-$RELEASE.txt" ] && echo OK)
+          if [ -f "plugin/plugin-$RELEASE.txt" ]; then OK_RELEASE=OK; fi
           echo "OK_RELEASE=$OK_RELEASE" >> $GITHUB_ENV
 
       - name: Release
@@ -64,3 +64,10 @@ jobs:
           allowUpdates: true
           prerelease: true
           artifacts: ${{ format('plugin/plugin-{0}.txt', env.RELEASE) }}
+
+      - name: Not Release
+        if: ${{ env.OK_RELEASE != 'OK' }}
+        run: |
+          echo "Unexpected release $RELEASE"
+          ls plugin
+          false
