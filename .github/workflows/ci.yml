@@ -50,4 +50,17 @@ jobs:
 
       - name: Check
         run: |
+          set -x
           ls -lR
+          OK_RELEASE=$( [ -f "plugin/plugin-$RELEASE"] && echo OK)
+          echo "OK_RELEASE=$OK_RELEASE" >> $GITHUB_ENV
+
+      - name: Release
+        if: ${{ env.OK_RELEASE = OK }}
+        uses: ncipollo/release-action@v1
+        with:
+          token: $${{ secrets.GITHUB.TOKEN }}
+          name: Release $${{ env.RELEASE }}
+          allowUpdates: true
+          prerelease: true
+          artifacts: ${{ format("plugin/plugin-{0}.txt, env.RELEASE) }}
